@@ -4,7 +4,7 @@
 # The app mimics the dash for python application that can be found here:
 # https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-svm
 # The Confusion Matrix Pie Chart format was inspired by Nicolas's Dash ROC app.
-# The data used in this app were meant to generally replicate the datasets 
+# The data used in this app were meant to generally replicate the datasets
 # built in to scikit-learn, and were obtained using the clusterSim package
 # See data/getData.R to see how the data were obtained
 
@@ -13,13 +13,13 @@ library(dashCoreComponents)
 library(dashHtmlComponents)
 
 appName <- Sys.getenv("DASH_APP_NAME")
-if (appName != ""){
+if (appName != "") {
   pathPrefix <- sprintf("/%s/", appName)
 
   Sys.setenv(DASH_ROUTES_PATHNAME_PREFIX = pathPrefix,
              DASH_REQUESTS_PATHNAME_PREFIX = pathPrefix)
-
-  setwd(sprintf("/app/%s", appName))
+  setwd("./app")
+  #setwd(sprintf("/app/%s", appName))
 }
 
 source("utils/helperFunctions.R")
@@ -75,7 +75,7 @@ app$layout(
                   overflowX = "hidden"
                 ),
                 children = list(
-                  # card() is defined in utils/reusableComponents.R 
+                  # card() is defined in utils/reusableComponents.R
                   card(
                     id = "first-card",
                     children = list(
@@ -86,7 +86,7 @@ app$layout(
                         options = list(
                           list(label = "Moons", value = "moons"),
                           list(
-                            label = "Linearly Separable", 
+                            label = "Linearly Separable",
                             value = "linear"
                           ),
                           list(label = "Circles", value = "circles")
@@ -255,15 +255,15 @@ app$layout(
                             paper_bgcolor = "#272b38",
                             plot_bgcolor = "#272b38",
                             xaxis = list(
-                              zeroline = FALSE, 
-                              showline = FALSE, 
-                              showticklabels = FALSE, 
+                              zeroline = FALSE,
+                              showline = FALSE,
+                              showticklabels = FALSE,
                               showgrid = FALSE
                             ),
                             yaxis = list(
-                              zeroline = FALSE, 
-                              showline = FALSE, 
-                              showticklabels = FALSE, 
+                              zeroline = FALSE,
+                              showline = FALSE,
+                              showticklabels = FALSE,
                               showgrid = FALSE
                             )
                           ),
@@ -291,22 +291,22 @@ app$layout(
                         id = "graph-line-roc-curve",
                         style = list(height = "40%"),
                         figure = plot_ly(
-                            type = "scatter", 
+                            type = "scatter",
                             mode = "lines"
                           ) %>%
                           layout(
                             paper_bgcolor = "#272b38",
                             plot_bgcolor = "#272b38",
                             xaxis = list(
-                              zeroline = FALSE, 
-                              showline = FALSE, 
-                              showticklabels = FALSE, 
+                              zeroline = FALSE,
+                              showline = FALSE,
+                              showticklabels = FALSE,
                               showgrid = FALSE
                             ),
                             yaxis = list(
-                              zeroline = FALSE, 
-                              showline = FALSE, 
-                              showticklabels = FALSE, 
+                              zeroline = FALSE,
+                              showline = FALSE,
+                              showticklabels = FALSE,
                               showgrid = FALSE
                             )
                           ),
@@ -322,15 +322,15 @@ app$layout(
                             paper_bgcolor = "#272b38",
                             plot_bgcolor = "#272b38",
                             xaxis = list(
-                              zeroline = FALSE, 
-                              showline = FALSE, 
-                              showticklabels = FALSE, 
+                              zeroline = FALSE,
+                              showline = FALSE,
+                              showticklabels = FALSE,
                               showgrid = FALSE
                             ),
                             yaxis = list(
-                              zeroline = FALSE, 
-                              showline = FALSE, 
-                              showticklabels = FALSE, 
+                              zeroline = FALSE,
+                              showline = FALSE,
+                              showticklabels = FALSE,
                               showgrid = FALSE
                             )
                           ),
@@ -355,7 +355,7 @@ app$callback(
     s <- 10 ** power
     as.list(
       setNames(
-        lapply(seq(1, 10, 2) * s, round, 8), 
+        lapply(seq(1, 10, 2) * s, round, 8),
         seq(1, 10, 2)
       )
     )
@@ -518,7 +518,7 @@ app$callback(
 )
 
 if (appName != "") {
-  app$run_server(host = "0.0.0.0", port = Sys.getenv('PORT', 8050)) 
+  app$run_server(host = "0.0.0.0", port = Sys.getenv('PORT', 8050))
 } else {
   app$run_server()
 }
