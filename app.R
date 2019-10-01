@@ -19,7 +19,6 @@ if (appName != ""){
   Sys.setenv(DASH_ROUTES_PATHNAME_PREFIX = pathPrefix,
              DASH_REQUESTS_PATHNAME_PREFIX = pathPrefix)
   setwd("./app")
-  #setwd(sprintf("/app/%s", appName))
 }
 
 source("utils/helperFunctions.R")
